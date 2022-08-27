@@ -16,5 +16,5 @@ switch (SID("player-seen")) {
         default:
             std::cout << "Unknown string ID" << std::endl;
             break;
-    }
+}
 ```
