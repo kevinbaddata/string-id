@@ -1,5 +1,5 @@
 # String identification (SID)
-
+String identification is a debugging tool that is commonly used in game development to look up game assets. The objects in any virtual game world needs to be uniquely identified in some way. The unique object identifiers allow Game Designers to keep track of object count to make up their game worlds. The Unreal Engine employs a similar technique  to wrap the string id and a pointer to the corresponding C-style character array in a tiny class, in the Unreal Engine this class is called FName.
 ## Example usage
 
 ```cpp
