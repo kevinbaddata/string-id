@@ -1,5 +1,20 @@
 #include <iostream>
+#include <string.h>
 #include <string>
+#include <fstream>
+constexpr const unsigned long long ToStringId64(const char* str);
+void printMenu();
+bool CheckWord(char* filename, char* search);
+
+#define EXIT exit(0)
+#define SID(str) ToStringId64(str)
+
+int main() {
+
+
+
+    return 0;
+}
 
 constexpr const unsigned long long ToStringId64(const char* str) {
     unsigned long long base = 0xCBF29CE484222325;
@@ -21,14 +36,68 @@ void printMenu() {
     std::cout << "--exit: exit program" << std::endl;
     std::cout << "--help: print this help" << std::endl;
 
+    char input[10];
+    std::cout << "> ";
+    std::cin >> input;
+
+    if(strcmp(input, "--list") == 0) {
+        std::cout << "Listing all string IDs and corresponding strings" << std::endl;
+    } else if(strcmp(input, "--clean") == 0) {
+        std::cout << "Cleaning all string IDs and corresponding strings" << std::endl;
+    } else if(strcmp(input, "--save") == 0) {
+
+        FILE* f = fopen("strings.txt", "w");
+        if(f == NULL) {
+            std::cout << "Error opening file" << std::endl;
+            EXIT;
+        }
+
+        std::cout << "Enter string to save: ";
+        char str[20];
+        std::cin >> str;
+
+        fprintf(f, "%s -> %llu\n", str, SID(str));
+
+        fclose(f);
+
+    } else if(strcmp(input, "--load") == 0) {
+        std::cout << "Loading all string IDs and corresponding strings from file" << std::endl;
+    } else if(strcmp(input, "--exit") == 0) {
+        std::cout << "Exiting program" << std::endl;
+        EXIT;
+    } else if(strcmp(input, "--help") == 0) {
+        printMenu();
+    } else {
+        std::cout << "Invalid input" << std::endl;
+    }
 }
-#define EXIT exit(0)
-#define SID(str) ToStringId64(str)
 
-int main() {
+bool CheckWord(char* filename, char* search) {
+    int offset;
+    std::string line;
+    std::ifstream Myfile;
+    Myfile.open (filename);
 
-    printMenu();
-   
+    if (Myfile.is_open())
+    {
+        while (!Myfile.eof())
+        {
+            getline(Myfile,line);
+            if ((offset = line.find(search, 0)) != std::string::npos)
+            {
+                std::cout << "found '" << search << "' in '" << line << "'" << std::endl;
+                Myfile.close();
+                return true;
+            }
+            else
+            {
+                std::cout << "Not found" << std::endl;
+            }
+        }
+        Myfile.close();
+    }
+    else
+        std::cout << "Unable to open this file." << std::endl;
 
-    return 0;
+    return false;
 }
