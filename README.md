@@ -11,10 +11,10 @@ String identification is a debugging tool that is commonly used in game developm
 ```cpp
 switch (SID("player-seen")) {
         case SID("player-seen"):
-            std::cout << "Player has been spotted" << std::endl;
+            alertAI();
             break;
         case SID("player-not-seen"):
-            std::cout << "Player has not been spotted" << std::endl;
+            keepLooking();
             break;
         case SID("player-not-found"):
             std::cout << "Player not found" << std::endl;
