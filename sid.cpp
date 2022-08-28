@@ -11,7 +11,7 @@ bool CheckWord(char* filename, char* search);
 
 int main() {
 
-
+    printMenu();
 
     return 0;
 }
@@ -32,6 +32,7 @@ void printMenu() {
     std::cout << "--list: list all string IDs and corresponding strings" << std::endl;
     std::cout << "--clean: remove all string IDs and corresponding strings" << std::endl;
     std::cout << "--save: save all string IDs and corresponding strings to file" << std::endl;
+    std::cout << "--convert: convert string to a FNV-1 Hash" << std::endl;
     std::cout << "--load: load all string IDs and corresponding strings from file" << std::endl;
     std::cout << "--exit: exit program" << std::endl;
     std::cout << "--help: print this help" << std::endl;
@@ -42,11 +43,23 @@ void printMenu() {
 
     if(strcmp(input, "--list") == 0) {
         std::cout << "Listing all string IDs and corresponding strings" << std::endl;
+        FILE* f = fopen("strings.txt", "r");
+        if(f == NULL) {
+            std::cout << "Error: file not found" << std::endl;
+            return;
+        }
+        char line[100];
+        while(fgets(line, 100, f)) {
+            std::cout << line;
+        }
+        fclose(f);
     } else if(strcmp(input, "--clean") == 0) {
         std::cout << "Cleaning all string IDs and corresponding strings" << std::endl;
+        FILE* f = fopen("strings.txt", "w");
+        fclose(f);
     } else if(strcmp(input, "--save") == 0) {
 
-        FILE* f = fopen("strings.txt", "w");
+        FILE* f = fopen("strings.txt", "a");
         if(f == NULL) {
             std::cout << "Error opening file" << std::endl;
             EXIT;
@@ -60,7 +73,13 @@ void printMenu() {
 
         fclose(f);
 
-    } else if(strcmp(input, "--load") == 0) {
+    } else if(strcmp(input, "--convert") == 0) {
+        std::cout << "Enter string to convert: ";
+        char str[20];
+        std::cin >> str;
+        std::cout << "String ID: " << SID(str) << std::endl;
+    }
+    else if(strcmp(input, "--load") == 0) {
         std::cout << "Loading all string IDs and corresponding strings from file" << std::endl;
     } else if(strcmp(input, "--exit") == 0) {
         std::cout << "Exiting program" << std::endl;
