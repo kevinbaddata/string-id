@@ -9,6 +9,9 @@ bool CheckWord(char* filename, char* search);
 #define EXIT exit(0)
 #define SID(str) ToStringId64(str)
 
+#pragma warning (disable: 4307)
+
+
 int main() {
 
     printMenu();
