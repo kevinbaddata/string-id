@@ -8,6 +8,7 @@ bool CheckWord(char* filename, char* search);
 
 #define EXIT exit(0)
 #define SID(str) ToStringId64(str)
+#define SID_VAL(str) StringIdHash(str)
 
 #pragma warning (disable: 4307)
 
