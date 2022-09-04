@@ -13,7 +13,7 @@ String identification is a debugging tool that is commonly used in game developm
 #define SID(str) StringID(str)
 #define SID_VAL(str) ToStringId64(str)
 
- switch (SID("player-seen").GetValue()) {
+switch (SID("player-seen").GetValue()) {
 
         case SID_VAL("player-seen"):
             playerSeen();
