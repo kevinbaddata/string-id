@@ -26,7 +26,6 @@ switch (SID("player-seen").GetValue()) {
         default:
             printf("default");
             break;
-
 }
 //...
 ```
