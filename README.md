@@ -9,7 +9,7 @@ String identification is a debugging tool that is commonly used in game developm
 ## Example usage
 
 ```cpp
-//expand macro to generate a StringID
+// expand macro to generate a StringID
 #define SID(str) StringID(str)
 #define SID_VAL(str) ToStringId64(str)
 
@@ -27,5 +27,4 @@ switch (SID("player-seen").GetValue()) {
             printf("default");
             break;
 }
-//...
 ```
