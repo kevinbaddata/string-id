@@ -9,22 +9,23 @@ String identification is a debugging tool that is commonly used in game developm
 ## Example usage
 
 ```cpp
-switch (SID("player-seen")) {
-        
-        case SID("player-seen"):
-            alertAI();
+//expand macro to generate a StringID
+#define SID(str) StringID(str)
+#define SID_VAL(str) ToStringId64(str)
+
+ switch (SID("player-seen").GetValue()) {
+
+        case SID_VAL("player-seen"):
+            playerSeen();
             break;
-        
-        case SID("player-not-seen"):
+
+        case SID_VAL("player-not-seen"):
             keepLooking();
             break;
-        
-        case SID("player-not-found"):
-            std::cout << "Player not found" << std::endl;
-            break;
-        
+
         default:
-            std::cout << "Unknown string ID" << std::endl;
+            printf("default");
             break;
+
 }
 ```
