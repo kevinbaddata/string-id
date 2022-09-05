@@ -27,13 +27,16 @@ switch (SID("player-seen").GetValue()) {
             printf("default");
             break;
 }
-```
+``` 
+
+
+
 
 ```cpp
-  // generate a StringID
-    StringID sid0 = SID("player-spotted");
+// generate a StringID
+StringID sid0 = SID("player-spotted");
 
-    switch (sid0.GetValue()) {
+switch (sid0.GetValue()) {
         case SID_VAL("player-spotted"):
             std::cout << "player spotted" << std::endl;
             break;
