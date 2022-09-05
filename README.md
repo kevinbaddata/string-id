@@ -28,3 +28,20 @@ switch (SID("player-seen").GetValue()) {
             break;
 }
 ```
+
+```cpp
+  // generate a StringID
+    StringID sid0 = SID("player-spotted");
+
+    switch (sid0.GetValue()) {
+        case SID_VAL("player-spotted"):
+            std::cout << "player spotted" << std::endl;
+            break;
+        case SID_VAL("player-killed"):
+            std::cout << "player killed" << std::endl;
+            break;
+        default:
+            std::cout << "unknown" << std::endl;
+            break;
+}
+```
