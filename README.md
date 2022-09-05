@@ -31,6 +31,8 @@ switch (SID("player-seen").GetValue()) {
 
 // generate a StringID
 StringID sid0 = SID("player-spotted");
+
+// print the hash value
 printf("sid0: %llu", sid0.GetValue());
 ``` 
 
