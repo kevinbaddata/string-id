@@ -27,6 +27,11 @@ switch (SID("player-seen").GetValue()) {
             printf("default");
             break;
 }
+
+
+// generate a StringID
+StringID sid0 = SID("player-spotted");
+printf("sid0: %llu", sid0.GetValue());
 ``` 
 
 
