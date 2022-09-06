@@ -31,7 +31,6 @@ switch (SID("player-seen").GetValue()) {
             break;
 }
 
-
 // generate a StringID
 StringID sid0 = SID("player-spotted");
 
