@@ -34,6 +34,9 @@ switch (SID("player-seen").GetValue()) {
 // generate a StringID
 StringID sid0 = SID("player-spotted");
 
+// check for valid expression using assert()
+assert(sid0.GetValue() == 10586563035916556716)
+
 // print the hash value
 printf("sid0: %llu", sid0.GetValue());
 ``` 
