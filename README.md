@@ -5,7 +5,7 @@ String identification is a debugging tool that is commonly used in game developm
 
 ## Advantages of using SIDs over string
 * SIDs take up smaller amount of memory compared to strings.
-* SID comparisons are compiled time, vastly improving performance time.  
+* SID comparisons are compiled time constants, vastly improving performance time.  
 * The SID macro can be applied on switch cases.
 
 
