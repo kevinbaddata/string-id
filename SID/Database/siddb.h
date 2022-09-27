@@ -7,10 +7,11 @@ namespace SID
 	public:
 		DB();
 		~DB();
+		
 		static void saveHash();
 		static void loadHash();
 		static void cleanHash();
-		
+		static void shutDown();
 	};
 	
 }
