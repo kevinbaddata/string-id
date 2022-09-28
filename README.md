@@ -18,12 +18,12 @@ String identification is a debugging tool that is commonly used in game developm
 
 switch (SID("player-seen").GetValue()) {
 
-        case SID_VAL("player-seen"):
-            playerSeen();
+        case SID_VAL("player-spotted"):
+            alertEnemies();
             break;
 
         case SID_VAL("player-not-seen"):
-            keepLooking();
+            keepSearching()
             break;
 
         default:
@@ -35,7 +35,7 @@ switch (SID("player-seen").GetValue()) {
 StringID sid0 = SID("player-spotted");
 
 // check for valid expression using assert()
-assert(sid0.GetValue() == 10586563035916556716)
+assert(sid0.GetValue() == "player-spotted")
 
 // print the hash value
 printf("sid0: %llu", sid0.GetValue());
