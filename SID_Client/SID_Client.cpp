@@ -3,13 +3,18 @@
 #include <string.h>
 #include <fstream>
 #include <string.h>
+#include <stdio.h>
+
+#include <WS2tcpip.h>
+#include <SID/sid.h>
+#pragma comment(lib, "ws2_32.lib")
 
 #include "SID/sid.h"
 #include "SID/siddb.h"
 
 #define SID(str) (StringID{str})
 #define SID_VAL(str) (StringIdHash(str))
-
+#define TERMINATE_PROGRAM exit (0);
 
 void printUsage()
 {
@@ -23,9 +28,9 @@ void printUsage()
 	std::cout << "--help: print this help" << std::endl;
 }
 
-int main()
+int main(const char* argv[], int argc)
 {
-
+	
 	// initialize winsock
 	WSADATA wsData;
 	WORD ver = MAKEWORD(2, 2);
@@ -114,45 +119,55 @@ int main()
 
 	// cleanup winsock
 	WSACleanup();
-
-	char input[10];
 	
+	char input[10];
+
 	while (1)
 	{
-	
-	printUsage();
-	std::cout << "> ";
-	std::cin >> input;
 
-	if (strcmp(input, "--list") == 0)
-	{
-		SID::DB::loadHash();
-	} else if ((strcmp(input, "--clean") == 0)) {
-	} else if (strcmp(input, "--save") == 0) {
-		SID::DB::saveHash();
-	} else if (strcmp(input, "--convert") == 0)
-	{
-		std::cout << "Enter a string to convert to a FNV-1 Hash: ";
-		char input[15];
+		printUsage();
+		std::cout << "> ";
 		std::cin >> input;
 
-		printf("FNV-1 Hash: %llu\n", SID_VAL(input));
-	} else if(strcmp(input, "--load") == 0)
-	{
-	} else if (strcmp(input, "--exit") == 0)
-	{
-		return 0;
-	} else if (strcmp(input, "--help") == 0)
-	{
-		printUsage();
-	} else
-	{
-		std::cout << "Invalid command" << std::endl;
-	}
+		if (strcmp(input, "--list") == 0)
+		{
+			DB::loadHash();
+		}
+		else if ((strcmp(input, "--clean") == 0)) {
+		}
+		else if (strcmp(input, "--save") == 0) {
+			DB::saveHash();
+		}
+		else if (strcmp(input, "--convert") == 0)
+		{
+			std::cout << "Enter a string to convert to a FNV-1 Hash: ";
+			char input[15];
+			std::cin >> input;
+
+			printf("FNV-1 Hash: %llu\n", SID_VAL(input));
+		}
+		else if (strcmp(input, "--load") == 0)
+		{
+		}
+		else if (strcmp(input, "--exit") == 0)
+		{
+			return 0;
+		}
+		else if (strcmp(input, "--help") == 0)
+		{
+			printUsage();
+		}
+		else
+		{
+			printf("Invalid input, please try again.\n");
+		}
 
 	}
+
 	
+
 	return 0;
+	
 
 }
 
