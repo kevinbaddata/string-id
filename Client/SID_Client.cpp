@@ -4,9 +4,10 @@
 #include <fstream>
 #include <string.h>
 #include <stdio.h>
+#include <vector>
+
 
 #include <WS2tcpip.h>
-#include <SID/sid.h>
 #pragma comment(lib, "ws2_32.lib")
 
 #include "SID/sid.h"
@@ -14,7 +15,8 @@
 
 #define SID(str) (StringID{str})
 #define SID_VAL(str) (StringIdHash(str))
-#define TERMINATE_PROGRAM exit (0);
+
+#define EXIT exit (0);
 
 void printUsage()
 {
@@ -28,9 +30,12 @@ void printUsage()
 	std::cout << "--help: print this help" << std::endl;
 }
 
+
 int main(const char* argv[], int argc)
-{
-	
+{	
+
+
+	EXIT
 	// initialize winsock
 	WSADATA wsData;
 	WORD ver = MAKEWORD(2, 2);

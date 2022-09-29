@@ -1,24 +1,38 @@
+// exclude from build in the IDE
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+
+// header files for socket connection and file I/O
+#include <windows.h>
+#include <winsock2.h>
+#include <ws2tcpip.h>
+#include <iphlpapi.h>
+#include <stdio.h>
+
+#pragma comment(lib, "Ws2_32.lib")
+
+#include <stdlib.h>
+#include <fstream>
+#include <string>
+#include <iostream>
+
+// header files for string ID
 #include "sid.h"
 #include "siddb.h"
 
-#include <stdlib.h>
-#include <stdio.h>
-#include <fstream>
-#include <string>
-#include <string.h>
-
-SID::DB::DB()
+DB::DB()
 {
 	printf("Connected to SID database\n");
 }
 
-SID::DB::~DB()
+DB::~DB()
 {
 	printf("Disconnected from SID database\n");
 }
 
 // Todo: save hash to file
-void SID::DB::saveHash()
+void DB::saveHash()
 {
 	std::ofstream file;
 	file.open("SID_DB.txt", std::fstream::app);
@@ -41,7 +55,7 @@ void SID::DB::saveHash()
 	
 }
 
-void SID::DB::loadHash()
+void DB::loadHash()
 {
 	std::ifstream file("SID_DB.txt");
 
@@ -62,7 +76,7 @@ void SID::DB::loadHash()
 	
 }
 
-void SID::DB::cleanHash()
+void DB::cleanHash()
 {
 	std::ofstream file;
 	file.open("SID_DB.txt", std::fstream::trunc);
@@ -77,7 +91,7 @@ void SID::DB::cleanHash()
 	file.close();
 }
 
-void SID::DB::shutDown()
+void DB::shutDown()
 {
 	printf("Shutting down SID database\n");
 		
