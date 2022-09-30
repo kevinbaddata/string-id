@@ -43,7 +43,7 @@ switch (sid0.GetValue()) {
 
 // asset look up
 Texture* pTexture = new Texture();
-pTexture->get(SID("my_texture"));
+pTexture->loadTexture(SID("texture.png").GetValue());
 ``` 
 
 
