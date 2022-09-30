@@ -16,7 +16,17 @@ String identification is a debugging tool that is commonly used in game developm
 #define SID(str) StringID(str)
 #define SID_VAL(str) ToStringId64(str)
 
-switch (SID("player-seen").GetValue()) {
+
+// generate a StringID
+StringID sid0 = SID("player-spotted");
+
+// check for valid expression using assert()
+assert(sid0.GetValue() == "player-spotted")
+
+// print the hash value
+printf("sid0: %llu", sid0.GetValue());
+
+switch (sid0.GetValue()) {
 
         case SID_VAL("player-spotted"):
             alertEnemies();
@@ -31,16 +41,8 @@ switch (SID("player-seen").GetValue()) {
             break;
 }
 
-// generate a StringID
-StringID sid0 = SID("player-spotted");
 
-// check for valid expression using assert()
-assert(sid0.GetValue() == "player-spotted")
-
-// print the hash value
-printf("sid0: %llu", sid0.GetValue());
-
-// look up asset
+// asset look up
 Texture* pTexture = new Texture();
 pTexture->get(SID("my_texture"));
 ``` 
