@@ -39,6 +39,10 @@ assert(sid0.GetValue() == "player-spotted")
 
 // print the hash value
 printf("sid0: %llu", sid0.GetValue());
+
+// look up asset
+Texture* pTexture = new Texture();
+pTexture->get(SID("my_texture"));
 ``` 
 
 
