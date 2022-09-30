@@ -16,7 +16,6 @@ String identification is a debugging tool that is commonly used in game developm
 #define SID(str) StringID(str)
 #define SID_VAL(str) ToStringId64(str)
 
-
 // generate a StringID
 StringID sid0 = SID("player-spotted");
 
