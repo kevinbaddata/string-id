@@ -18,7 +18,6 @@ String identification is a debugging tool that is commonly used in game developm
   const char* game_state = "player-seen";
     uint32_t event = SID(game_state);
     
-    
     switch (event) {
         case SID("player-seen"):
             // Play a line of dialog...
@@ -28,7 +27,7 @@ String identification is a debugging tool that is commonly used in game developm
             
         default:
             break;
-    }
+}
     
 ``` 
 
