@@ -13,37 +13,23 @@ String identification is a debugging tool that is commonly used in game developm
 
 ```cpp
 // expand macro to generate a StringID
-#define SID(str) StringID(str)
-#define SID_VAL(str) ToStringId64(str)
+#define SID(x) hash::fnv1a<uint32_t>::hash(x)
 
-// generate a StringID
-StringID sid0 = SID("player-spotted");
-
-// check for valid expression using assert()
-assert(sid0.GetValue() == "player-spotted")
-
-// print the hash value
-printf("sid0: %llu", sid0.GetValue());
-
-switch (sid0.GetValue()) {
-
-        case SID_VAL("player-spotted"):
-            alertEnemies();
+  const char* game_state = "player-seen";
+    uint32_t event = SID(game_state);
+    
+    
+    switch (event) {
+        case SID("player-seen"):
+            // Play a line of dialog...
+            // Play a line of dialogue from a file called "dialogue1.wav"
+             playDialogue("dialogue1.wav");
             break;
-
-        case SID_VAL("player-not-seen"):
-            keepSearching()
-            break;
-
+            
         default:
-            printf("default");
             break;
-}
-
-
-// asset look up
-Texture* pTexture = new Texture();
-pTexture->loadTexture(SID("texture.png").GetValue());
+    }
+    
 ``` 
 
 
