@@ -12,20 +12,25 @@ String identification is a debugging tool that is commonly used in game developm
 ## Example usage
 
 ```cpp
-// expand macro to generate a StringID
+// This macro generates a 32-bit hash value from a string literal
 #define SID(x) hash::fnv1a<uint32_t>::hash(x)
 
+// Declare a constant char pointer and initialize it with a string literal
 const char* game_state = "player-seen";
+
+// Generate a hash value from the string literal using the SID macro
 uint32_t event = SID(game_state);
     
+// Use the generated hash value in a switch statement
 switch (event) {
-      case SID("player-seen"):
-          // Play a line of dialog...
-          // Play a line of dialogue from a file called "dialogue1.wav"
-          playDialogue("dialogue1.wav");
-          break;
-//...
+    case SID("player-seen"):
+        // If the hash value matches the hash value generated from "player-seen",
+        // play a line of dialogue from a file called "dialogue1.wav"
+        playDialogue("dialogue1.wav");
+        break;
+    // Other cases...
 }
+
 //...
     
 ``` 
