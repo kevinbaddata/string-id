@@ -15,19 +15,16 @@ String identification is a debugging tool that is commonly used in game developm
 // expand macro to generate a StringID
 #define SID(x) hash::fnv1a<uint32_t>::hash(x)
 
-  const char* game_state = "player-seen";
-    uint32_t event = SID(game_state);
+const char* game_state = "player-seen";
+uint32_t event = SID(game_state);
     
-    switch (event) {
-        case SID("player-seen"):
-            // Play a line of dialog...
-            // Play a line of dialogue from a file called "dialogue1.wav"
-             playDialogue("dialogue1.wav");
-            break;
-            
-        default:
-            break;
-   //...
+switch (event) {
+      case SID("player-seen"):
+          // Play a line of dialog...
+          // Play a line of dialogue from a file called "dialogue1.wav"
+          playDialogue("dialogue1.wav");
+          break;
+    //...
    }
    //...
     
