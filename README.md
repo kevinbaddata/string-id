@@ -26,7 +26,7 @@ switch (event) {
     case SID("player-seen"):
         // If the hash value matches the hash value generated from "player-seen",
         // play a line of dialogue from a file called "dialogue1.wav"
-        PlayDialogue("dialogue1.wav");
+        PlayDialogue(SID("line-player-seen"));
         break;
     // Other cases...
 }
