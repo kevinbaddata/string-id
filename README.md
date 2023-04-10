@@ -30,8 +30,7 @@ switch (event) {
         break;
     // Other cases...
 }
-
-//...
+    //...
     
 ``` 
 
